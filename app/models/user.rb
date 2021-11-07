@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def already_favorited?(book)
     self.favorites.exists?(book_id: book.id)
   end
-  
+
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def following?(user)
-    followerings.include?(user)
+    followings.include?(user)
   end
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true

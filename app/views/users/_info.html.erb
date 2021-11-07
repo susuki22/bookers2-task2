@@ -8,6 +8,29 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th>follows</th>
+    <th><%= link_to user.followers.count, user_followers_path(user) %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to user.followings.count, user_followings_path(user) %></th>
+  </tr>
+  <tr>
+    <th>
+      <% if user == current_user %>
+        <% if user.following?(current_user) %>
+          <%= link_to user_relationships_path(user), method: :delete do %>
+            <button class="btn btn-danger">フォロー解除</button>
+          <% end %>
+        <% else %>
+          <%= link_to user_relationships_path(user), method: :post do %>
+            <button class="btn btn-primary">フォロー</button>
+          <% end %>
+        <% end %>
+      <% end %>
+    </th>
+  </tr>
 </table>
 
 <div class='row'>
