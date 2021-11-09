@@ -11,7 +11,7 @@ class BookCommentsController < ApplicationController
 		else
 		  render 'books/show'
 		end
-	end
+  end
 
   def destroy
     @book = Book.find(params[:book_id])
